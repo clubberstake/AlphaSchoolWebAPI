@@ -7,6 +7,8 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc.Cors;
 
 namespace AlphaSchoolWeb
 {
@@ -37,6 +39,22 @@ namespace AlphaSchoolWeb
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllOrigins"));
+            //    //options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllHeaders"));
+            //    //options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllMethods"));
+            //});
+
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowAllOrigins",
+            //        builder => { builder.AllowAnyOrigin(); });
+            //    //options.AddPolicy("AllowAllHeaders",
+            //    //    builder => builder.AllowAnyHeader());
+            //    //options.AddPolicy("AllowAllMethods",
+            //    //    builder => { builder.AllowAnyMethod(); });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline

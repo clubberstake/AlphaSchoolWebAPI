@@ -3,5 +3,6 @@
   <PropertyGroup>
     <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
     <AutoRefresh>false</AutoRefresh>
+    <NameOfLastUsedPublishProfile>AlphaSchoolWeb</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
