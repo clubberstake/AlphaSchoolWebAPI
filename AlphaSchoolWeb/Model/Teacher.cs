@@ -12,5 +12,7 @@
                 return FirstName + " " + LastName;
             }
         }
+
+        public string CourseName { get; internal set; }
     }
 }

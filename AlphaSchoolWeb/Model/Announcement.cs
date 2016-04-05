@@ -9,5 +9,7 @@ namespace AlphaSchoolWeb.Model
         public string Title { get; set; }
         public string Description { get; set; }
         public string AttachmentPath { get; set; }
+        public string CourseName { get; internal set; }
+        public string Date { get; internal set; }
     }
 }
