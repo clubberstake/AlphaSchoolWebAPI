@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using AlphaSchoolWeb.Model;
+using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Cors;
+using Microsoft.AspNet.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace AlphaSchoolWeb.Controllers
@@ -17,13 +21,20 @@ namespace AlphaSchoolWeb.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            Student student = new Student()
+            {
+                FirstName = "Frank",
+                LastName = "The Tank",
+                ID = "12345"
+            };
+            return JsonConvert.SerializeObject(student);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public string Post([FromBody]Student student)
         {
+            return JsonConvert.SerializeObject(student);
         }
 
         // PUT api/values/5
