@@ -38,9 +38,9 @@ namespace AlphaSchoolWeb.Controllers
         }
 
         [HttpDelete]
-        public string DeleteAccount(string id)
+        public string DeleteAccount(string id, string LastName)
         {
-            return "Account Deleted Passed ->" + id;
+            return "Account Deleted Passed ->" + id + LastName;
         }
     }
 }
