@@ -8,44 +8,39 @@ using System.Collections.Generic;
 namespace AlphaSchoolWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class HomeController : Controller
+    public class AssignCourseController : Controller
     {
-
-        [HttpPost]
-        public string Post([FromBody]Teacher teacher)
-        {
-            return JsonConvert.SerializeObject(teacher);
-        }
-
         [HttpGet]
-        public string ViewCourses()
+        public string IdList()
         {
-            var courseList = new List<Course>()
+            var IDList = new List<Course>()
             {
                 new Course()
                 {
-                    ID = "1",
+                    ID = "101",
                     CourseName = "Math",
-                    Grade = 4
+                    Grade = 1
                 },
-
                 new Course()
                 {
-                    ID = "2",
+                     ID = "201",
                     CourseName = "Science",
-                    Grade = 2
+                    Grade = 1
                 },
-
                 new Course()
                 {
-                   ID = "3",
-                   CourseName = "English",
-                   Grade = 3
+                    ID = "301",
+                    CourseName = "English",
+                    Grade = 1
                 }
-              
             };
-            return JsonConvert.SerializeObject(courseList);
+            return JsonConvert.SerializeObject(IDList);
         }
 
+        [HttpGet("{id}")]
+        public string Get(string id)
+        {
+            return "this is the ID:" + id;
+        }
     }
 }
