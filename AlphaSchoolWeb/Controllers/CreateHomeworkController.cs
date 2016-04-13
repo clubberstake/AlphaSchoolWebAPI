@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Newtonsoft.Json;
 using AlphaSchoolWeb.Model;
+using AlphaSchoolWeb.Request;
+using System.Text;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,38 +15,47 @@ namespace AlphaSchoolWeb.Controllers
     [Route("api/[controller]")]
     public class CreateHomeworkController : Controller
     {
-        public string CreateHomework()
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            var teacherList = new List<Teacher>() {
-
-                new Teacher() {
-
-                    FirstName = "Brian ",
-                    LastName = "Smith",
-                    CourseName = "Grade 1: Mathematics, Grade 3: Mathematics",
-                    ID = "1",
+            var courseList = new List<Course>()
+            {
+                new Course()
+                {
+                    CourseName = "Math",
+                    Grade = 1,
+                    ID = "101"
+                },
+                new Course()
+                {
+                    CourseName = "English",
+                    Grade = 2,
+                    ID = "201"
+                },
+                new Course()
+                {
+                    CourseName = "Science",
+                    Grade = 3,
+                    ID = "303"
                 }
             };
-            return JsonConvert.SerializeObject(teacherList);
-        }
 
+            return JsonConvert.SerializeObject(courseList);
+        }
 
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]Homework homework)
+        public string Post([FromBody]CreateHomeworkRequest createHomeworkRequest)
         {
-            var homeworkList = new List<Homework>() {
-
-                new Homework() {
-                    AttachmentPath= "Upload",
-                    Date = "April 5th 2016",
-                    CourseName = "Grade 1: Mathematics",
-                    Title = "Homework Sucks!",
-
-                }
-            };
-            return JsonConvert.SerializeObject(homework);
+            //return JsonConvert.SerializeObject(createHomeworkRequest);
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(createHomeworkRequest.AnnouncementText);
+            sb.AppendLine(createHomeworkRequest.DateTime.ToLocalTime().ToString());
+            sb.AppendLine(createHomeworkRequest.CourseId);
+            sb.AppendLine(createHomeworkRequest.Attachment);
+            return sb.ToString();
         }
 
     }
+
 }

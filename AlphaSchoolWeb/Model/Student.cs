@@ -13,6 +13,7 @@ namespace AlphaSchoolWeb.Model
             {
                 return FirstName + " " + LastName;
             }
+            
         }
         public List<Course> Courses { get; set; }
     }

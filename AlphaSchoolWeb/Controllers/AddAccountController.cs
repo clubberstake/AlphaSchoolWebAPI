@@ -1,12 +1,16 @@
-﻿using AlphaSchoolWeb.Model;
-using Microsoft.AspNet.Mvc;
-using Newtonsoft.Json;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Mvc;
+using AlphaSchoolWeb.Model;
+
+// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AlphaSchoolWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class AddAccountController : Controller
     {
         // GET: api/values
         [HttpGet]
@@ -19,20 +23,14 @@ namespace AlphaSchoolWeb.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            Student student = new Student()
-            {
-                FirstName = "Frank",
-                LastName = "The Tank",
-                ID = "12345"
-            };
-            return JsonConvert.SerializeObject(student);
+            return "value";
         }
 
         // POST api/values
         [HttpPost]
         public string Post([FromBody]Student student)
         {
-            return JsonConvert.SerializeObject(student);
+            return "Account Created for: ->" + student.FullName;
         }
 
         // PUT api/values/5

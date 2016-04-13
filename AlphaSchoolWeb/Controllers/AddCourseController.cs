@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Newtonsoft.Json;
 using AlphaSchoolWeb.Model;
-using AlphaSchoolWeb.Request;
-using System.Text;
+using AlphaSchoolWeb.Response;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AlphaSchoolWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class CreateAnnouncementController : Controller
+    public class AddCourseController : Controller
     {
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/values
+       [HttpGet]
+        public string CourseList()
         {
             var courseList = new List<Course>()
             {
@@ -39,23 +39,25 @@ namespace AlphaSchoolWeb.Controllers
                     ID = "303"
                 }
             };
+            var addCourseResponse = new AddCourseResponse();
+            addCourseResponse.CourseList = courseList;
+            addCourseResponse.CourseNames = CourseNames.Names;
+            return JsonConvert.SerializeObject(addCourseResponse);
+        }     
 
-            return JsonConvert.SerializeObject(courseList);
-        }
+        
+        
+
 
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]CreateAnnouncementRequest createAnnouncementRequest)
+        public string Post([FromBody] Course course)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(createAnnouncementRequest.AnnouncementText);
-            sb.AppendLine(createAnnouncementRequest.DateTime.ToLocalTime().ToString());
-            sb.AppendLine(createAnnouncementRequest.CourseId);
-            sb.AppendLine(createAnnouncementRequest.Attachment);
-            return sb.ToString();
+
+            return JsonConvert.SerializeObject(course);
+            
         }
 
-    }
-        
-    }
 
+}
+}

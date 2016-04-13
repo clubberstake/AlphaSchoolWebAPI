@@ -14,18 +14,10 @@ namespace AlphaSchoolWeb.Controllers
     {
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]Contact contact)
+        public string Post([FromBody] Contact contact)
         {
-            var contactList = new List<Contact>() {
-
-                new Contact() {
-                   ContactName = "Teacher",
-                   SubjectName = "subject name",
-                   Message = "My kid is a troublemaker",
-                   
-                }
-            };
             return JsonConvert.SerializeObject(contact);
+            
         }
 
     }
